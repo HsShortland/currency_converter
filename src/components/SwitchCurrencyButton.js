@@ -1,4 +1,4 @@
-
+import Button from 'react-bootstrap/Button';
 
 function SwitchCurrencyButton(props) {
 
@@ -10,7 +10,7 @@ function SwitchCurrencyButton(props) {
         props.setDropDownSelection2(selectCurrency1)
     }
     return (
-        <button onClick={() => {switchCurrency(); props.setStoredConvertedCurrency(null); } }>Switch</button>
+        <Button onClick={() => {switchCurrency(); props.setStoredConvertedCurrency(null); } }>Switch</Button>
         
     );
 }
