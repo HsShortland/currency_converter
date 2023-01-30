@@ -1,4 +1,3 @@
-import './App.css';
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import CurrencyDropDown from './components/CurrencyDropDown';
@@ -64,22 +63,22 @@ function App() {
           <CurrencyDropDown countries={countries} dropDownSelection={dropDownSelection2} setDropDownSelection={setDropDownSelection2}></CurrencyDropDown>
         </Col>
       </Row>
-      <Row style={{ height: "10vh" }}>
+      <Row className="justify-content-center" style={{ textAlign: "center", height: "10vh" }}>
         <Col>
-      <SwitchCurrencyButton dropDownSelection1={dropDownSelection1} dropDownSelection2={dropDownSelection2}
-        setDropDownSelection1={setDropDownSelection1} setDropDownSelection2={setDropDownSelection2}
-        setStoredConvertedCurrency={setStoredConvertedCurrency}
-      ></SwitchCurrencyButton>
-      <ConversionButton
-        countries={countries} exchangeRate={exchangeRate} userInput={userInput} setUserInput={setUserInput}
-        dropDownSelection1={dropDownSelection1} dropDownSelection2={dropDownSelection2}
-        nullInputAlert={nullInputAlert} setNullInputAlert={setNullInputAlert} storedConvertedCurrency={storedConvertedCurrency}
-        setStoredConvertedCurrency={setStoredConvertedCurrency}>
-      </ConversionButton>
-      <DismissableAlert nullInputAlert={nullInputAlert} setNullInputAlert={setNullInputAlert}
-        userInput={userInput} setUserInput={setUserInput}></DismissableAlert>
+          <SwitchCurrencyButton dropDownSelection1={dropDownSelection1} dropDownSelection2={dropDownSelection2}
+            setDropDownSelection1={setDropDownSelection1} setDropDownSelection2={setDropDownSelection2}
+            setStoredConvertedCurrency={setStoredConvertedCurrency}
+          ></SwitchCurrencyButton>
+          <ConversionButton
+            countries={countries} exchangeRate={exchangeRate} userInput={userInput} setUserInput={setUserInput}
+            dropDownSelection1={dropDownSelection1} dropDownSelection2={dropDownSelection2}
+            nullInputAlert={nullInputAlert} setNullInputAlert={setNullInputAlert} storedConvertedCurrency={storedConvertedCurrency}
+            setStoredConvertedCurrency={setStoredConvertedCurrency}>
+          </ConversionButton>
+          <DismissableAlert nullInputAlert={nullInputAlert} setNullInputAlert={setNullInputAlert}
+            userInput={userInput} setUserInput={setUserInput}></DismissableAlert>
         </Col>
-        </Row>
+      </Row>
     </div>
   </Container>
 
