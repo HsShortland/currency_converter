@@ -5,6 +5,10 @@ import CurrencyDropDown from './components/CurrencyDropDown';
 import ConversionButton from './components/ConversionButton';
 import SwitchCurrencyButton from './components/SwitchCurrencyButton';
 import DismissableAlert from './components/DismissableAlert';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
 
 
 
@@ -17,7 +21,7 @@ function App() {
   const [nullInputAlert, setNullInputAlert] = useState(false);
   const [storedConvertedCurrency, setStoredConvertedCurrency] = useState(null);
 
-  const fetchAllData = () =>{
+  const fetchAllData = () => {
     const allCountriesAPI = 'https://openexchangerates.org/api/currencies.json'
     const allRatesAPI = 'https://api.exchangerate-api.com/v4/latest/GBP'
 
@@ -25,7 +29,7 @@ function App() {
     const getAllRates = axios.get(allRatesAPI)
 
     axios.all([getAllCountries, getAllRates]).then(
-      axios.spread((...allData) =>{
+      axios.spread((...allData) => {
         const allCountries = allData[0].data
         const allRates = allData[1].data.rates;
 
@@ -37,19 +41,35 @@ function App() {
   }
   useEffect(() => {
     fetchAllData()
-  },[]
+  }, []
   )
-  return (
+  return (<Container>
     <div className="App">
-      <header className="App-header">
-      </header>
-      <input type="text" id="numberInput" onChange={event => setUserInput(event.target.value)}></input>
-      <CurrencyDropDown countries={countries} dropDownSelection={dropDownSelection1} setDropDownSelection={setDropDownSelection1}></CurrencyDropDown>
-      <CurrencyDropDown countries={countries} dropDownSelection={dropDownSelection2} setDropDownSelection={setDropDownSelection2}></CurrencyDropDown>
+      <Row className="align-items-center" style={{ height: "20vh" }}>
+        <Col>
+          <Form>
+            <Form.Label>Amount</Form.Label>
+            <Form.Control type="text" id="numberInput" onChange={event => setUserInput(event.target.value)}>
+            </Form.Control>
+          </Form>
+        </Col>
+      </Row>
+      <Row style={{ height: "10vh" }}>
+        <Col>
+          <CurrencyDropDown countries={countries} dropDownSelection={dropDownSelection1} setDropDownSelection={setDropDownSelection1}></CurrencyDropDown>
+        </Col>
+      </Row>
+      <Row style={{ height: "10vh" }}>
+        <Col>
+          <CurrencyDropDown countries={countries} dropDownSelection={dropDownSelection2} setDropDownSelection={setDropDownSelection2}></CurrencyDropDown>
+        </Col>
+      </Row>
+      <Row style={{ height: "10vh" }}>
+        <Col>
       <SwitchCurrencyButton dropDownSelection1={dropDownSelection1} dropDownSelection2={dropDownSelection2}
         setDropDownSelection1={setDropDownSelection1} setDropDownSelection2={setDropDownSelection2}
         setStoredConvertedCurrency={setStoredConvertedCurrency}
-        ></SwitchCurrencyButton>
+      ></SwitchCurrencyButton>
       <ConversionButton
         countries={countries} exchangeRate={exchangeRate} userInput={userInput} setUserInput={setUserInput}
         dropDownSelection1={dropDownSelection1} dropDownSelection2={dropDownSelection2}
@@ -57,8 +77,12 @@ function App() {
         setStoredConvertedCurrency={setStoredConvertedCurrency}>
       </ConversionButton>
       <DismissableAlert nullInputAlert={nullInputAlert} setNullInputAlert={setNullInputAlert}
-      userInput={userInput} setUserInput={setUserInput}></DismissableAlert>
+        userInput={userInput} setUserInput={setUserInput}></DismissableAlert>
+        </Col>
+        </Row>
     </div>
+  </Container>
+
   );
 }
 
