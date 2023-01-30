@@ -1,4 +1,6 @@
 import Button from 'react-bootstrap/Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faRepeat } from '@fortawesome/free-solid-svg-icons'
 
 function SwitchCurrencyButton(props) {
 
@@ -10,8 +12,8 @@ function SwitchCurrencyButton(props) {
         props.setDropDownSelection2(selectCurrency1)
     }
     return (
-        <Button onClick={() => {switchCurrency(); props.setStoredConvertedCurrency(null); } }>Switch</Button>
-        
+        <Button variant="primary" style={{ margin: 5 }} onClick={() => { switchCurrency(); props.setStoredConvertedCurrency(null); }}><FontAwesomeIcon icon={faRepeat} size="lg" /></Button>
+
     );
 }
 

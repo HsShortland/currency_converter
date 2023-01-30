@@ -1,4 +1,3 @@
-
 import Button from 'react-bootstrap/Button';
 import React, { useState, useEffect } from 'react';
 
@@ -43,7 +42,7 @@ function ConversionButton(props) {
     const { displayMins, displaySeconds } = clockIt();
 
     return <>
-        <Button onClick={() => {
+        <Button variant="primary" style={{ margin: 5}} onClick={() => {
             props.setNullInputAlert(props.userInput === ""); convertCurrency();
         }}>Convert</Button>
         {props.storedConvertedCurrency ?

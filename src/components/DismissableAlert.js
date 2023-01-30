@@ -1,10 +1,9 @@
 import Alert from 'react-bootstrap/Alert';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react'
-import '../App.css'
 
 function DismissableAlert(props) {
-    
+
     if (props.nullInputAlert) {
         console.log('working')
         return <Alert variant="danger" onClose={() => props.setNullInputAlert(false)} dismissible>
