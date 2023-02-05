@@ -13,9 +13,9 @@ function DismissableAlert(props) {
     } else if (props.userInput !== null) {
         const userInputContains = props.userInput
         const arrayOfMatches = userInputContains.match(/\./g)
-        console.log(arrayOfMatches)
+        // console.log(arrayOfMatches)
         const numberOfMatches = arrayOfMatches?.length || 0;
-        console.log(numberOfMatches);
+        // console.log(numberOfMatches);
         if (numberOfMatches > 1) {
             return <Alert variant="danger" onClose={() => props.setUserInput(null)} dismissible>
                 <Alert.Heading>Error</Alert.Heading>
